@@ -7,11 +7,29 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(primer.data)
+library(rstanarm)
 ```
+
+For the Massachusetts Senate race in 2024, the Republican candidate needs to make voters more conservative about immigration. How many does she need to expose to Spanish-speakers to produce at least 10,000 voters with 12 or higher attitude scores?
 
 ```{r}
 
+fit_1 <- stan_glm(formula = att_end ~ treatment + att_start,
+                  data = trains,
+                  refresh = 0,
+                  seed = 1)
+fit_1
 
 
 ```
+
+Justice
+
+y = mx + b
+Don't merge variables like this: att_end = treatment(att_start) + Intercept
+
+att_end = B_0 + B_1(treatment) + B_2(att_start) + error
+
 
